@@ -2,21 +2,21 @@
 
 .content {
     display: flex;
-    margin: 100px 50px 50px 50px;
+    /* margin: 100px 50px 50px 50px; */
     font-family: sans-serif;
 }
 
 #area {
-    width: 100000px;
+    width: 1000000000000000000000000000000000000000000px;
     /* border: 1px solid #000; */
     margin: 0 auto;
     font-size: 0;
 }
 
 .cell {
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
     text-align: center;
     display: inline-block;
     font-size: 26px;
