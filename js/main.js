@@ -1,82 +1,43 @@
-var area = document.getElementById('area');
-var cell = document.getElementsByClassName('cell');
-
-var cells = [
-    [""],
-];
-
-var player = "x";
-
-var tmp = [];
-
-createCells();
+var area = document.getElementById("area"),
+    cell = document.getElementsByClassName("cell"),
+    cells = [
+        [""]
+    ],
+    player = "x",
+    tmp = [];
 
 function createCells() {
     area.innerHTML = "";
-    for (var i = 0; i < cells.length; i++) {
-        for (var j = 0; j < cells[i].length; j++) {
-            area.innerHTML += "<div class='cell' " + "onclick='cellClick(" + i + "," + j + ")'>" + cells[i][j] + "</div>";
-        }
-        area.innerHTML += "<br>";
+    for (var l = 0; l < cells.length; l++) {
+        for (var e = 0; e < cells[l].length; e++) area.innerHTML += "<div class='cell' onclick='cellClick(" + l + "," + e + ")'>" + cells[l][e] + "</div>";
+        area.innerHTML += "<br>"
     }
 }
 
-function cellClick(i, j) {
-    var n = cells.length;
-    var m = cells[0].length;
-    if (cells[i][j] == "")
-    {
-        cells[i][j] = player.toUpperCase();
-        player = player == "x" ? "o" : "x";
-    }
-    else
-    {
-        alert("Ячейка занята");
-        return;
-    }
-    if (i == 0)
-    {
-        tmp = cells;
-        cells = [[]];
-        for (var ii = 0; ii < tmp[0].length; ii++)
-        {
-            cells[0].push("");
+function cellClick(l, e) {
+    var c = cells.length,
+        s = cells[0].length;
+    if ("" == cells[l][e]) {
+        if (cells[l][e] = player.toUpperCase(), player = "x" == player ? "o" : "x", 0 == l) {
+            tmp = cells, cells = [
+                []
+            ];
+            for (var t = 0; t < tmp[0].length; t++) cells[0].push("");
+            for (t = 0; t < tmp.length; t++) cells.push(tmp[t])
         }
-        for (var ii = 0; ii < tmp.length; ii++)
-        {
-            cells.push(tmp[ii]);
+        if (l == c - 1) {
+            cells.push([]);
+            for (t = 0; t < cells[0].length; t++) cells[cells.length - 1].push("")
         }
-    }
-    if (i == n - 1)
-    {
-        cells.push([]);
-        for (var ii = 0; ii < cells[0].length; ii++)
-        {
-            cells[cells.length - 1].push("");
+        if (0 == e) {
+            tmp = cells, cells = [];
+            for (t = 0; t < tmp.length; t++) cells.push([""]);
+            for (t = 0; t < tmp.length; t++)
+                for (var r = 0; r < tmp[0].length; r++) cells[t].push(tmp[t][r])
         }
-    }
-    if (j == 0)
-    {
-        tmp = cells;
-        cells = [];
-        for (var ii = 0; ii < tmp.length; ii++)
-        {
-            cells.push([""]);
-        }
-        for (var ii = 0; ii < tmp.length; ii++)
-        {
-            for (var jj = 0; jj < tmp[0].length; jj++)
-            {
-                cells[ii].push(tmp[ii][jj]);
-            }
-        }
-    }
-    if (j == m - 1)
-    {
-        for (var ii = 0; ii <= cells.length - 1; ii++)
-        {
-            cells[ii].push("");
-        }
-    }
-    createCells();
+        if (e == s - 1)
+            for (t = 0; t <= cells.length - 1; t++) cells[t].push("");
+        createCells()
+    } else alert("Ячейка занята")
 }
+createCells();
